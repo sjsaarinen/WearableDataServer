@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 
+import com.ohtu.wearable.wearabledataservice.web.HTMLPage;
+
 import java.util.List;
 
 public class MainActivity extends FragmentActivity implements SelectedSensorsInterface {
@@ -23,10 +25,9 @@ public class MainActivity extends FragmentActivity implements SelectedSensorsInt
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        viewpager = (ViewPager) findViewById(R.id.pager);
-        PagerAdapter padapter = new PagerAdapter(getSupportFragmentManager());
-        viewpager.setAdapter(padapter);
+        setContentView(R.layout.wearablewebview_layout);
+        HTMLPage htmlPage=new HTMLPage((android.widget.LinearLayout) findViewById(R.id.wearableWebView), "<html><head></head><body><span>Jotain tekstiä!</span><span>Jotain tekstiä!</span><button>Kokeillaan pitempää tekstiä</button></body></html>");
+        htmlPage.renderHtmlPage(htmlPage);
     }
 
 }
